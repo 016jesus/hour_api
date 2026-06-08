@@ -1,22 +1,22 @@
-using System.Reflection.Metadata.Ecma335;
+
+using Horas.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Horas
+namespace Horas.Controllers
 {
     
     [ApiController]
     [Route("api/[controller]")]
-    public class HourController : ControllerBase
+    public class HourController(HourService hourService) : ControllerBase
     {
         //mirar la inyeccion de dependencias luego
-        HourService hservice = new();
-        
-        
+        private readonly HourService HourS = hourService;
+
         [HttpPost("sum")]
          public IActionResult Sum([FromBody] HourRequest request){
             if (request == null)
                 return BadRequest("Request is null");
-            var result = hservice.Sum(request);
+            var result = HourS.Sum(request);
             
             return Ok(new {result = result.ToString()});
         }

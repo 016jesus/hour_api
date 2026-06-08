@@ -1,10 +1,14 @@
-namespace Horas
+using System.ComponentModel.DataAnnotations;
+
+namespace Horas.Entities
 {
     public class Hour
     {
-        int H { get; set; }
-        int M { get; set; }
-        int S { get; set; }
+        [Key]
+        public int Id {get; set;}
+        public int H { get; set; }
+        public int M { get; set; }
+        public int S { get; set; }
 
         public Hour(int h, int m, int s)
         {
