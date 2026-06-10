@@ -26,9 +26,8 @@ namespace Horas.Controllers
         {
             if (request == null)
                 return BadRequest("Request is null");
-            var r = HourS.Sum(request);
-
-            return Ok(new { result = r });
+            var hour = HourS.Sum(request);
+            return Created($"/api/hour/{hour.Id}", hour);
         }
         [HttpPut()]
         public IActionResult Put([FromBody] PutRequest request)
