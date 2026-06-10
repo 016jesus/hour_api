@@ -9,8 +9,8 @@ namespace Horas.Entities
         public int H { get; set; }
         public int M { get; set; }
         public int S { get; set; }
-        
-        public DateTime LastModified {get; set;} = DateTime.Now;
+        //mirar en supabase los distintos tipos de timestamp para verificar cual es acorde con la hora colombiana
+        public DateTime LastModified {get; set;} = DateTime.UtcNow;
 
         public Hour(int h, int m, int s)
         {

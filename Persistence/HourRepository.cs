@@ -25,7 +25,6 @@ namespace Horas.Persistence
         {
             var h = GetHourByID(hour.Id);
             h = hour;
-            h.LastModified = DateTime.Now;
             return h;            
         }
         public void Delete(Hour hour)

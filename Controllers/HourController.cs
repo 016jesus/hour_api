@@ -15,9 +15,8 @@ namespace Horas.Controllers
         [HttpGet("{id:int}")]
         public IActionResult Get([FromRoute] int id)
         {
-            var date = DateTime.Today.Day;
             var h = HourS.Get(id);
-            return Ok(new { hour = h, date = date.ToString() });
+            return Ok(new { hour = h});
         }
 
 
