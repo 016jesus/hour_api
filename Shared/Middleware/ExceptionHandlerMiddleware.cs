@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace Horas.Application.Middleware
+namespace Horas.Shared.Middleware
 {
 
 

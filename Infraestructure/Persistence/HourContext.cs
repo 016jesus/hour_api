@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using Horas.Core.Entities;
+using Horas.Domain.Entities;
 
-namespace Horas.Persistence
+
+namespace Horas.Infraestructure.Persistence
 {
     
     public class HourContext(DbContextOptions dbContextOptions) : DbContext
@@ -10,6 +11,7 @@ namespace Horas.Persistence
         
         public DbSet<Hour> Hours {get; set;}
 
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -1,5 +1,5 @@
-using Horas.Core.Entities;
-namespace Horas.Persistence
+using Horas.Domain.Entities;
+namespace Horas.Infraestructure.Persistence
 {
 
     public class HourRepository(HourContext hourContext) : IHourRepository, IDisposable
@@ -11,20 +11,22 @@ namespace Horas.Persistence
             return _hourContext.Hours.ToList();
         }
 
-        ///<summary>Throws an exception if the hour is not found</summary>
-        public Hour GetHourByID(int HourId)
-        {
-            return _hourContext.Hours.FirstOrDefault(h => h.Id == HourId) ?? throw new ArgumentException("Hora inexistente en la db");
-        }
-        public void Add(Hour hour)
+
+        public void Create(Hour hour)
         {
             _hourContext.Hours.Add(hour);
         }
-
+        ///<summary>Returns the hour if its found.
+        /// Throws an exception if the hour is not found</summary>
+        public Hour GetHourByID(int HourId)
+        {
+            return _hourContext.Hours.FirstOrDefault(h => h.Id == HourId);
+        }
         public Hour Update(Hour hour)
         {
             var h = GetHourByID(hour.Id);
-            h = hour;
+            _hourContext.Entry(h).CurrentValues.SetValues(hour);
+            Save();
             return h;            
         }
         public void Delete(Hour hour)
@@ -40,14 +42,14 @@ namespace Horas.Persistence
         private bool disposed;
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
                 if (disposing)
                 {
                     _hourContext.Dispose();
                 }
             }
-            this.disposed = true;
+            disposed = true;
         }
          public void Dispose()
         {

@@ -1,12 +1,12 @@
-using Horas.Core.Entities;
+using Horas.Domain.Entities;
 
-namespace Horas.Persistence
+namespace Horas.Infraestructure.Persistence
 {
     public interface IHourRepository : IDisposable
     {
         IEnumerable<Hour> GetHours();
         Hour GetHourByID(int HourId);
-        void Add(Hour hour);
+        void Create(Hour hour);
         Hour Update(Hour hour);
         void Delete(Hour hour);
         void Save();

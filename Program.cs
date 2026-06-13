@@ -1,7 +1,7 @@
 ﻿
 using Horas.Application.Middleware;
-using Horas.Persistence;
-using Horas.Services;
+using Horas.Infraestructure.Persistence;
+using Horas.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Horas
@@ -43,8 +43,6 @@ namespace Horas
 
             app.MapControllers();
 
-
-            Console.WriteLine("Ya esta corriendo mi api :)))");
             app.MapGet("", () => "Hello world!");
             /* params hands on lab
             path and query params, with common uses

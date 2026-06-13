@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Horas.Core.Entities
+namespace Horas.Domain.Entities
 {
     public class Hour
     {

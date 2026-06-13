@@ -1,4 +1,4 @@
-namespace Horas.Request
+namespace Horas.Api.Request
 {
     
 

@@ -1,10 +1,10 @@
 
-using Horas.Core.Entities;
-using Horas.Services;
-using Horas.Request;
+using Horas.Domain.Entities;
+using Horas.Domain.Services;
+using Horas.Api.Request;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Horas.Application.Controllers
+namespace Horas.Api.Controllers
 {
 
     [ApiController]
@@ -14,15 +14,15 @@ namespace Horas.Application.Controllers
         //mirar la inyeccion de dependencias luego
         private readonly HourService HourS = hourService;
         [HttpGet("{id:int}")]
-        public IActionResult Get([FromRoute] int id)
+        public ActionResult<Hour> Get([FromRoute] int id)
         {
             var h = HourS.Get(id);
-            return Ok(new { hour = h});
+            return h;
         }
 
 
         [HttpPost("sum")]
-        public IActionResult Sum([FromBody] SumRequest request)
+        public ActionResult<Hour> Sum([FromBody] SumRequest request)
         {
             if (request == null)
                 return BadRequest("Request is null");
